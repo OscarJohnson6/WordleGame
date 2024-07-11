@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css">
+		<title>Wordle Game</title>
+	</head>
+
+	<body class="bg-[#c9c9c9]">
+		<div id="wrappingDiv" class="flex justify-center flex-wrap items-center">
+			<article class="min-w-[550px] mr-[5vw] ml-[5vw] h-svh">
+				<form id="wordleForm">
+					<div id="wordleBoard" class="flex flex-col items-center"></div>
+					<div class="flex justify-center">
+						<input type="submit"
+							value="Submit Word"
+							class="border-2 border-solid border-black bg-[#ccb793]/[.4] 
+							hover:text-white hover:bg-stone-700 rounded-full p-3 mx-1 
+							my-4 text-center text-xl text-stone-950 font-semibold flex 
+							justify-center" />
+					</div>
+				</form>
+			</article>
+			<article class="flex flex-col justify-evenly h-svh">
+				<div class="flex justify-evenly space-x-8">
+					<div>
+						<h2 class="font-semibold text-5xl mb-3">Current</h2>
+						<h3 class="text-4xl font-medium" id="currentScore"></h3>
+					</div>
+					<div class="w-1 bg-black rounded-full"></div>
+					<div>
+						<h2 class="font-semibold text-5xl mb-3 w-[202px]">Max</h2>
+						<h3 class="text-4xl font-medium" id="maxScore"></h3>
+					</div>
+				</div>
+				<div class="flex flex-col justify-center min-w-24 bg-stone-500 p-1 pb-3 rounded-[1.5em]">
+					<div class="flex justify-between mx-2">
+						<button id="letterFlipButton" 
+								class="min-w-16 p-2 mt-2 place-self-center rounded bg-stone-700 
+								hover:bg-stone-800 text-white font-semibold w-fit">
+							Flip
+						</button>
+						<button id="letterHideButton" 
+								class="min-w-16 p-2 mt-2 place-self-center rounded bg-stone-700 
+								hover:bg-stone-800 text-white font-semibold w-fit">
+							Hide
+						</button>
+					</div>
+					<div id="lettersHolder" class="max-w-[650px] flex justify-center flex-wrap"></div>
+				</div>
+			</article>
+		</div>
+	</body>
+</html>
+<script type="module" src="letters.js"></script>

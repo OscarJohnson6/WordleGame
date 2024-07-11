@@ -1,0 +1,25 @@
+# Ignore Mac OS system files
+.DS_Store
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore build output
+/dist/
+/build/
+
+# Ignore environment variables file
+.env
+
+# Ignore log files
+*.log
+
+# Ignore JetBrains IDE files
+.idea/
+*.iml
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore private API keys
+api_key.txt
