@@ -23,3 +23,6 @@ node_modules/
 
 # Ignore private API keys
 api_key.txt
+
+# A lot of filler code
+package-lock.json

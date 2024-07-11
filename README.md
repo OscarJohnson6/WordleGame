@@ -17,7 +17,7 @@ including the current streak and maximum streak achieved, are displayed througho
 | Deployment Frameworks | Vite & Vue   |
 
 ### Links
-- [Plan](plan.md)
+- [Plan](assets/plan.md)
 - [Wordnik API](https://developer.wordnik.com/)
 
-![Picture of Wordle board/game](v1Example.png)
+![Picture of Wordle board/game](assets/v1Example.png)

@@ -1,7 +1,7 @@
 // Reads a text file with the api key
 const getApiKey = async () => {
     try {
-        const response = await fetch('../api_key.txt');
+        const response = await fetch('resources/api_key.txt');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

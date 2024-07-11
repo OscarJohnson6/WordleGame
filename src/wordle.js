@@ -201,15 +201,21 @@ const validateFormSubmission = (event, boardDiv, boardArray) => {
 	inputs.forEach((input, index) => {
 		const letter = input.value.toLowerCase();
 		const letterBox = document.querySelector(`.letterBox${letter.toUpperCase()}`);
-		if (wordToGuess[index] === letter && !(input.className).includes("green")) {
+		if (wordToGuess[index] === letter) {
 			input.className += ` bg-green-500/[.6] shadow shadow-green-500/50`;
-			letterBox.className += ` bg-emerald-500/[.9] shadow-sm shadow-emerald-500/50`;
-		} else if (wordToGuess.includes(letter) && !(input.className).includes("amber")) {
+			if (!(letterBox.className).includes("green")) {
+				letterBox.className += ` bg-green-400/[.9] shadow-sm shadow-green-400/50`;
+			}
+		} else if (wordToGuess.includes(letter)) {
 			input.className += ` bg-amber-400/[.6] shadow shadow-amber-400/50`;
-			letterBox.className += ` bg-yellow-400/[.9] shadow-sm shadow-yellow-400/50`;
-		} else if (!(input.className).includes("zinc")) {
+			if (!(letterBox.className).includes("yellow") && !(letterBox.className).includes("green")) {
+				letterBox.className += ` bg-yellow-400/[.9] shadow-sm shadow-yellow-400/50`;
+			}
+		} else { 
 			input.className += ` bg-stone-500/[.6] shadow shadow-stone-500/50`;
-			letterBox.className += ` bg-zinc-400/[.9] shadow-sm shadow-400-500/50`;
+			if (!(letterBox.className).includes("zinc")) {
+				letterBox.className += ` bg-zinc-400/[.9] shadow-sm shadow-zinc-500/50`;
+			}
 		}
 	});
 
