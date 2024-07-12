@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "dev": "",
     "start": "serve -s dist"
   }
 }
