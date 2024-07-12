@@ -12,7 +12,8 @@
   },
   "scripts": {
     "build": "vite build",
-    "dev": "",
-    "start": "serve -s dist"
+    "dev": "vite",
+    "start": "serve -s dist",
+    "heroku-postbuild": "npm run build"
   }
 }
