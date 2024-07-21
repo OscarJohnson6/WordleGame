@@ -22,7 +22,7 @@ node_modules/
 .vscode/
 
 # Ignore private API keys
-api_key.txt
+recources/api_key.txt
 
 # A lot of filler code
-package-lock.json
+/package-lock.json
