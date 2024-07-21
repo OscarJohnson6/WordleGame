@@ -10,24 +10,24 @@ let wordToGuess = "";
 const generateRandomWord = async () => {
 	const apiKey = await getApiKey();
 	const api = `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&minLength=5&maxLength=5&limit=1&api_key=${apiKey}`;
-	// const response = await fetch(api);
-	// const words = await response.json();
-	// wordToGuess = words[0].word;
-	const words = [
-		"found",
-		"truth",
-		"books",
-		"rover",
-		"plane",
-		"roses",
-		"earth",
-		"couch",
-		"apple"
-	];
-
-	wordToGuess = words[Math.floor(Math.random() * words.length)];
+	const response = await fetch(api);
+	const words = await response.json();
+	wordToGuess = (words[0].word).toLowerCase();
 
 	if (wordToGuess.length == 0 || wordToGuess.length > 5) {
+		const backupWords = [
+			"found",
+			"truth",
+			"books",
+			"rover",
+			"plane",
+			"roses",
+			"earth",
+			"couch",
+			"apple"
+		];
+	
+		wordToGuess = backupWords[Math.floor(Math.random() * words.length)];
 	}
 
 	console.log(wordToGuess);
@@ -166,10 +166,10 @@ const resetBoard = async (boardDiv, boardArray) => {
 	boardDiv.innerHTML = "";
 	boardArray.length = 0;
 	currentRow = 0;
-	await generateRandomWord();
 
 	displayWordleBoard(boardDiv, boardArray);
 	displayUserScore();
+	// Reads letters js as well so event listeners are set
 	createAlphabetDisplay();
 
 	// Enable the first row after reset
@@ -178,6 +178,8 @@ const resetBoard = async (boardDiv, boardArray) => {
 
 	// Focus on first box
     Array.from((document.querySelector(`.row:nth-child(${currentRow + 1})`)).querySelectorAll("input"))[0].focus();
+
+	await generateRandomWord();
 };
 
 // Validate form submission
@@ -203,12 +205,12 @@ const validateFormSubmission = (event, boardDiv, boardArray) => {
 		const letterBox = document.querySelector(`.letterBox${letter.toUpperCase()}`);
 		if (wordToGuess[index] === letter) {
 			input.className += ` bg-green-500/[.6] shadow shadow-green-500/50`;
-			if (!(letterBox.className).includes("green")) {
-				letterBox.className += ` bg-green-400/[.9] shadow-sm shadow-green-400/50`;
+			if (!(letterBox.className).includes("emerald")) {
+				letterBox.className += ` bg-emerald-400/[.9] shadow-sm shadow-emerald-400/50`;
 			}
 		} else if (wordToGuess.includes(letter)) {
 			input.className += ` bg-amber-400/[.6] shadow shadow-amber-400/50`;
-			if (!(letterBox.className).includes("yellow") && !(letterBox.className).includes("green")) {
+			if (!(letterBox.className).includes("yellow") && !(letterBox.className).includes("emerald")) {
 				letterBox.className += ` bg-yellow-400/[.9] shadow-sm shadow-yellow-400/50`;
 			}
 		} else { 
