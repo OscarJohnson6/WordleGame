@@ -20,9 +20,3 @@ node_modules/
 
 # Ignore Visual Studio Code settings
 .vscode/
-
-# Ignore private API keys
-recources/api_key.txt
-
-# A lot of filler code
-/package-lock.json

@@ -1,4 +1,3 @@
-import { getApiKey } from "./readfile.js";
 import { createAlphabetDisplay } from "./letters.js";
 
 let currentScore = 0;
@@ -8,7 +7,7 @@ let wordToGuess = "";
 
 // Helper function to generate a random word
 const generateRandomWord = async () => {
-	const apiKey = await getApiKey();
+	const apiKey = import.meta.env.VITE_API_KEY;
 	const api = `https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&minLength=5&maxLength=5&limit=1&api_key=${apiKey}`;
 	const response = await fetch(api);
 	const words = await response.json();
@@ -169,6 +168,7 @@ const resetBoard = async (boardDiv, boardArray) => {
 
 	displayWordleBoard(boardDiv, boardArray);
 	displayUserScore();
+	await generateRandomWord();
 	// Reads letters js as well so event listeners are set
 	createAlphabetDisplay();
 
@@ -178,8 +178,6 @@ const resetBoard = async (boardDiv, boardArray) => {
 
 	// Focus on first box
     Array.from((document.querySelector(`.row:nth-child(${currentRow + 1})`)).querySelectorAll("input"))[0].focus();
-
-	await generateRandomWord();
 };
 
 // Validate form submission
